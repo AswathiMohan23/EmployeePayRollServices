@@ -1,12 +1,23 @@
 package com.java;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class EmployeePayRollServices {
-    private List< EmployeePayrollData>employeePayrollList;
+import static com.java.IOService.FILE_IO;
 
+public class EmployeePayRollServices {
+    public static String PAYROLL_FILE_NAME = "payrollFile.txt";
+
+    public EmployeePayRollServices(List<EmployeePayrollData> employeePayrollList) {
+        this.employeePayrollList = employeePayrollList;
+    }
+
+    private List< EmployeePayrollData>employeePayrollList;
     public EmployeePayRollServices(ArrayList<EmployeePayrollData> employeePayrollList) {
         this.employeePayrollList=employeePayrollList;
     }
@@ -17,11 +28,14 @@ public class EmployeePayRollServices {
         EmployeePayRollServices employeePayRollServices =new EmployeePayRollServices(employeePayrollList);
         Scanner sc=new Scanner(System.in);
         employeePayRollServices.readEmployeePayrollData(sc);
-        employeePayRollServices.writeEmployeePayrollData();
+        employeePayRollServices.writeEmployeePayrollData(FILE_IO);
     }
 
-    private void writeEmployeePayrollData() {
-        System.out.println("\nWriting employee payRoll data o console\n"+employeePayrollList);
+    void writeEmployeePayrollData(IOService fileIo) {
+        if(fileIo.equals(IOService.CONSOLE_IO))
+             System.out.println("\nWriting employee payRoll data o console\n"+employeePayrollList);
+        else if(fileIo.equals(FILE_IO))
+            new EmployeePayrollFileIOService().writeData(employeePayrollList);
     }
 
     private void readEmployeePayrollData(Scanner sc) {
@@ -33,5 +47,7 @@ public class EmployeePayRollServices {
         double salary=sc.nextDouble();
         employeePayrollList.add(new EmployeePayrollData(name,id,salary));
     }
+
+
 }
 
