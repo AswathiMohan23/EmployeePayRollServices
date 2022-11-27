@@ -48,6 +48,20 @@ public class EmployeePayRollServices {
         employeePayrollList.add(new EmployeePayrollData(name,id,salary));
     }
 
+    public void printData(IOService fileIo){
+        try {
+            Files.lines(new File("payrollFile.txt").toPath())
+                    .forEach(System.out::println);
+        }catch (IOException e){}
+    }
 
+    public long countEntries(IOService fileIo){
+        long entries=0;
+        try {
+            entries=Files.lines(new File("payrollFile.txt").toPath())
+                    .count();
+        }catch (IOException e){}
+        return entries;
+    }
 }
 
