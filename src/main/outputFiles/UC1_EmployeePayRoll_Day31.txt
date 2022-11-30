@@ -17,6 +17,7 @@ mysql> show databases;
 +--------------------+
 8 rows in set (0.01 sec)
 
+
 ================================================================ UC2 =============================================================================
 
 			Ability to create a employee payroll table in the payroll service database to manage employee payrolls
