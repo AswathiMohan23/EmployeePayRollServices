@@ -1,0 +1,18 @@
+============================================================== UC1 ====================================================================================
+						 
+						      Ability to create a payroll service database
+						     **********************************************
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| demo               |
+| information_schema |
+| mysql              |
+| payrollservices    |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.01 sec)
