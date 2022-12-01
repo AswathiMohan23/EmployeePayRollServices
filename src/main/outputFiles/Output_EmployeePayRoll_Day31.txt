@@ -342,8 +342,30 @@ mysql> SELECT * FROM employee_payroll;
 mysql>
 
 
+==================================================================== UC11 ============================================================================================================================
+
+                                                Implement the ER Diagram into Payroll Service DB
+                                               **************************************************
+
+mysql>       CREATE TABLE DEPARTMENT(
+    ->      DepartmentId INT not null,
+    ->      EmpId INT unsigned NOT NULL,
+    ->      primary key(EmpId),
+    ->      foreign key(EmpId) references employee_payroll(id));
+Query OK, 0 rows affected (0.02 sec)
 
 
+mysql> INSERT INTO DEPARTMENT(DepartmentId,EmpId) VALUES (3,1),(6,2),(1,3),(5,4);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
 
-
-
+mysql> SELECT * FROM DEPARTMENT;
++--------------+-------+
+| DepartmentId | EmpId |
++--------------+-------+
+|            3 |     1 |
+|            6 |     2 |
+|            1 |     3 |
+|            5 |     4 |
++--------------+-------+
+4 rows in set (0.00 sec)
