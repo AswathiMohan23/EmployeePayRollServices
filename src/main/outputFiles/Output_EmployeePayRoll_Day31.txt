@@ -103,4 +103,50 @@ mysql> SELECT * FROM employee_payroll WHERE start BETWEEN CAST('2016-09-22' AS D
 3 rows in set (0.01 sec)
 
 
+================================================================== UC6 =================================================================================
+
+                                                 ADDING FIELD AND INSERTING VALUES
+                                                ***********************************
+
+mysql> ALTER TABLE employee_payroll ADD gender CHAR(1) AFTER name;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM employee_payroll;
++----+-------+--------+--------+------------+
+| id | name  | gender | salary | start      |
++----+-------+--------+--------+------------+
+|  1 | Tom   | NULL   | 900000 | 2012-09-23 |
+|  2 | John  | NULL   | 800000 | 2020-11-20 |
+|  3 | Anna  | NULL   | 700000 | 2013-12-09 |
+|  4 | Maria | NULL   | 400000 | 2016-12-09 |
+|  5 | Harry | NULL   | 300000 | 2021-12-07 |
++----+-------+--------+--------+------------+
+5 rows in set (0.00 sec)
+
+mysql> update employee_payroll set gender = "M" where name = 'Tom';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee_payroll set gender = "M" where name = 'John' or name = 'Harry';
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update employee_payroll set gender = "F" where name = 'Anna' or name = 'Maria';
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM employee_payroll;
++----+-------+--------+--------+------------+
+| id | name  | gender | salary | start      |
++----+-------+--------+--------+------------+
+|  1 | Tom   | M      | 900000 | 2012-09-23 |
+|  2 | John  | M      | 800000 | 2020-11-20 |
+|  3 | Anna  | F      | 700000 | 2013-12-09 |
+|  4 | Maria | F      | 400000 | 2016-12-09 |
+|  5 | Harry | M      | 300000 | 2021-12-07 |
++----+-------+--------+--------+------------+
+5 rows in set (0.00 sec)
+
+
 
