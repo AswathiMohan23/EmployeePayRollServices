@@ -222,3 +222,57 @@ mysql> SELECT gender, SUM(salary) FROM employee_payroll GROUP BY gender;
 +--------+-------------+
 2 rows in set (0.00 sec)
 
+
+======================================================================= UC8 =======================================================================================================
+
+    Ability to extend employee_payroll data to store employee information like employee phone, address and department - Ensure employee department
+  **************************************************************************************************************************************************
+
+mysql> update employee_payroll set Tax = '10000' where name = 'Maria' or name = 'John';
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update employee_payroll set Tax = '9000' where name = 'Anna' or name = 'Tom';
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update employee_payroll set Tax = '11000' where name = 'Harry';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee_payroll set TaxPayable = '4000' where name = 'Anna';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee_payroll set TaxPayable = '2000' where name = 'Tom';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee_payroll set TaxPayable = '5000' where name = 'john';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee_payroll set TaxPayable = '7000' where name = 'Harry';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee_payroll set TaxPayable = '3000' where name = 'Maria';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM employee_payroll;
++----+-------+--------+------------+-----------+-------------+---------+-------+------------+------------+
+| id | name  | gender | Department | Address   | PhoneNumber | salary  | Tax   | TaxPayable | start      |
++----+-------+--------+------------+-----------+-------------+---------+-------+------------+------------+
+|  1 | Tom   | M      | xyz        | Goa       | 456123789   |  900000 | 9000  | 2000       | 2012-09-23 |
+|  2 | John  | M      | xyz        | Karnataka | 123456789   |  800000 | 10000 | 5000       | 2020-11-20 |
+|  3 | Anna  | F      | abc        | Kerala    | 412378569   | 5000000 | 9000  | 4000       | 2013-12-09 |
+|  4 | Maria | F      | pqr        | TamilNadu | 5746238889  |  400000 | 10000 | 3000       | 2016-12-09 |
+|  5 | Harry | M      | abc        | Kerala    | 6746238889  |  300000 | 11000 | 7000       | 2021-12-07 |
++----+-------+--------+------------+-----------+-------------+---------+-------+------------+------------+
+5 rows in set (0.00 sec)
+
+
+
+
+
