@@ -3,10 +3,8 @@ package com.java;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
+
 import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
 import static com.java.IOService.FILE_IO;
 
@@ -26,15 +24,6 @@ public class EmployeePayrollServiceTest {
         Assert.assertEquals(3, entries);
 
     }
-
-   /* @Test
-    public void givenNewSalaryForEmployeeWhenUpdated_ShouldSyncWithDB() {
-    EmployeePayRollServices employeePayRollServices = new EmployeePayRollServices();
-    //List<EmployeePayrollData> employeePayrollData = employeePayRollServices.readEmployeePayrollData();
-    employeePayRollServices.updateEmployeeSalary("Terrisa",3000000.00);
-    boolean result = employeePayRollServices.checkEmployeePayrollInSyncWithDB("Terrisa", 3000000.00);
-    Assert.assertTrue(result);
-}*/
 
     @Test
     public void givenNewSalaryForEmployeeWhenUpdated_ShouldSyncWithDB() {
