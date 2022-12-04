@@ -1,14 +1,32 @@
 package com.java;
 
+import java.time.LocalDate;
+
 public class EmployeePayrollData {
     private String name;
     private int id;
     private double salary;
+    public LocalDate start;
 
     public EmployeePayrollData( String name,int id, double salary) {
         this.name = name;
         this.id = id;
         this.salary = salary;
+    }
+
+    public EmployeePayrollData( int id,String name, double salary, LocalDate start) {
+        this.name = name;
+        this.id = id;
+        this.salary = salary;
+        this.start = start;
+    }
+
+    public LocalDate getStart() {
+        return start;
+    }
+
+    public void setStart(LocalDate start) {
+        this.start = start;
     }
 
     public int getId() {
@@ -42,5 +60,14 @@ public class EmployeePayrollData {
                 ", id=" + id +
                 ", salary=" + salary +
                 '}';
+    }
+
+    @Override
+    public  boolean equals(Object o){
+        if(this==o) return true;
+        if(o==null || getClass()!=o.getClass()) return false;
+        EmployeePayrollData that =(EmployeePayrollData) o;
+        return id == that.id && Double.compare(that.salary,salary)== 0 &&
+                name.equals(that.name);
     }
 }

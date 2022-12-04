@@ -3,24 +3,26 @@ package com.java;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import static com.java.IOService.FILE_IO;
 
+
 public class EmployeePayRollServices {
+    private List<EmployeePayrollData> employeePayrollList;
     public static String PAYROLL_FILE_NAME = "payrollFile.txt";
+
 
     public EmployeePayRollServices(List<EmployeePayrollData> employeePayrollList) {
         this.employeePayrollList = employeePayrollList;
     }
 
-    private List< EmployeePayrollData>employeePayrollList;
     public EmployeePayRollServices(ArrayList<EmployeePayrollData> employeePayrollList) {
         this.employeePayrollList=employeePayrollList;
     }
+
 
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Pay roll Services");
@@ -29,6 +31,13 @@ public class EmployeePayRollServices {
         Scanner sc=new Scanner(System.in);
         employeePayRollServices.readEmployeePayrollData(sc);
         employeePayRollServices.writeEmployeePayrollData(FILE_IO);
+    }
+
+
+    private EmployeePayrollData getEmployeePayrollData(String name){
+        return this.employeePayrollList.stream()
+                .filter(employeePayrollDataItem -> employeePayrollDataItem.getName().equals(name))
+                .findFirst().orElse(null);
     }
 
     void writeEmployeePayrollData(IOService fileIo) {
@@ -63,5 +72,7 @@ public class EmployeePayRollServices {
         }catch (IOException e){}
         return entries;
     }
+
+
 }
 
