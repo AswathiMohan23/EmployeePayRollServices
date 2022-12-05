@@ -39,5 +39,10 @@ public class EmployeePayrollServiceTest {
         String query="Select * from employee_payroll where name ='Tom'";
         Assert.assertTrue(jdbcConnection(query));
     }
+    @Test
+    public void retrievingEmployeeDataByDate() throws SQLException, EmployeePayRollException {
+        String query="Select * from employee_payroll where start ='2013-12-09'";
+        Assert.assertTrue(jdbcConnection(query));
+    }
 }
 
