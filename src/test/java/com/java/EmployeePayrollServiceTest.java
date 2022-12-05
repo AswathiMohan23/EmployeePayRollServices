@@ -44,5 +44,10 @@ public class EmployeePayrollServiceTest {
         String query="Select * from employee_payroll where start ='2013-12-09'";
         Assert.assertTrue(jdbcConnection(query));
     }
+    @Test
+    public void retrievingEmployeeDataWithInGivenRangeOfDate() throws SQLException, EmployeePayRollException {
+        String query="SELECT * FROM employee_payroll WHERE start BETWEEN CAST('2016-09-22' AS DATE) AND DATE(NOW())";
+        Assert.assertTrue(jdbcConnection(query));
+    }
 }
 
