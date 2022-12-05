@@ -52,8 +52,13 @@ public class EmployeePayrollServiceTest {
     @Test
     public void abilityToFindSumOfSalaryOfMaleEmployees() throws SQLException, EmployeePayRollException {
         CalculatingAverageAndSum updateDb=new CalculatingAverageAndSum();
-        String operation="sum";
         String query="SELECT SUM(salary) AS totalSalary FROM employee_payroll where gender ='M'";
+        updateDb.calculateTheValues(query);
+    }
+    @Test
+    public void abilityToFindSumOfSalaryOfFemaleEmployees() throws SQLException, EmployeePayRollException {
+        CalculatingAverageAndSum updateDb=new CalculatingAverageAndSum();
+        String query="SELECT SUM(salary) AS totalSalary FROM employee_payroll where gender ='F'";
         updateDb.calculateTheValues(query);
     }
 }
