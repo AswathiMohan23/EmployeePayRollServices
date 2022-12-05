@@ -49,5 +49,12 @@ public class EmployeePayrollServiceTest {
         String query="SELECT * FROM employee_payroll WHERE start BETWEEN CAST('2016-09-22' AS DATE) AND DATE(NOW())";
         Assert.assertTrue(jdbcConnection(query));
     }
+    @Test
+    public void abilityToFindSumOfSalaryOfMaleEmployees() throws SQLException, EmployeePayRollException {
+        CalculatingAverageAndSum updateDb=new CalculatingAverageAndSum();
+        String operation="sum";
+        String query="SELECT SUM(salary) AS totalSalary FROM employee_payroll where gender ='M'";
+        updateDb.calculateTheValues(query);
+    }
 }
 

@@ -1,14 +1,12 @@
 package com.java;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
 public class JdbcConnection {
-    /*public static void main(String[] args) throws SQLException, EmployeePayRollException {
-        jdbcConnection();
-    }*/
-
-    public static boolean jdbcConnection(String query)throws  SQLException, EmployeePayRollException{
+    public static boolean jdbcConnection(String query) throws SQLException, EmployeePayRollException {
         try {
             String DB_URL = "jdbc:mysql://localhost:3306/payrollservices"; // give database name
             String USER = "root";
@@ -28,12 +26,11 @@ public class JdbcConnection {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-       /* System.out.println(con);
-        System.out.println("Connection Established successfully");*/
+
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query); // Execute query
             while (rs.next()) {
-                System.out.println("\t\t\t\tid:" + rs.getInt("id"));
+                System.out.println("id:" + rs.getInt("id"));
                 System.out.println("name:" + rs.getString("name"));
                 System.out.println("gender:" + rs.getString("gender"));
                 System.out.println("Department:" + rs.getString("Department"));
@@ -44,21 +41,52 @@ public class JdbcConnection {
                 System.out.println("Tax:" + rs.getString("Tax"));
                 System.out.println("TaxPayable:" + rs.getString("TaxPayable"));
                 System.out.println("start:" + rs.getString("start"));
-                System.out.println();
+                System.out.println("\n");
             }
             st.close();
             con.close();
             return true;
-        }catch (EmployeePayRollException e){}
+        } catch (EmployeePayRollException e) {
+        }
         return false;
     }
 
+
     private static void listDrivers() {
-        Enumeration<Driver>driverList=DriverManager.getDrivers();
+        Enumeration<Driver> driverList = DriverManager.getDrivers();
         while
-        (driverList.hasMoreElements()){
-            Driver driverClass=(Driver) driverList.nextElement();
-            System.out.println(" "+driverClass.getClass().getName());
+        (driverList.hasMoreElements()) {
+            Driver driverClass = (Driver) driverList.nextElement();
+            System.out.println(" " + driverClass.getClass().getName());
         }
     }
 }
+
+
+  /*  public List getData(String operations) {
+        String sqlQuery;
+        if (operations.equals("COUNT"))
+            sqlQuery = String.format("select %s(id) from employee_payroll GROUP BY gender;",operations);
+        else
+            sqlQuery = String.format("select %s(salary) from employee_payroll GROUP BY gender;",operations);
+        List dataList = new ArrayList<>();
+        try(Connection connection = this.getConnection()) {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
+            while (resultSet.next())
+            {
+                double data = resultSet.getDouble(1);
+                dataList.add(data);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dataList;
+    }
+
+    private Connection getConnection() {
+        return null;
+    }
+}
+
+*/
