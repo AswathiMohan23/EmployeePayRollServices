@@ -30,10 +30,9 @@ public class EmployeePayrollServiceTest {
     }
 
     @Test
-    public void givenNewSalaryForEmployeeWhenUpdated_ShouldSyncWithDB() {
-        UpdateDB updateDB=new UpdateDB();
-        boolean result=updateDB.update();
-        Assert.assertTrue(result);
+    public void givenNewSalaryForEmployeeWhenUpdated_ShouldSyncWithDB() throws SQLException, EmployeePayRollException {
+        String query = "SELECT * FROM employee_payroll";
+        Assert.assertTrue(jdbcConnection(query));
     }
     @Test
     public void retrievingDataByName() throws SQLException, EmployeePayRollException {

@@ -13,7 +13,6 @@ public class JdbcConnection {
             String DB_URL = "jdbc:mysql://localhost:3306/payrollservices"; // give database name
             String USER = "root";
             String PASS = "aswathi123";
-            //String query = "SELECT * FROM employee_payroll";
             Connection con = null;
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver"); // Driver name
