@@ -61,5 +61,11 @@ public class EmployeePayrollServiceTest {
         String query="SELECT SUM(salary) AS totalSalary FROM employee_payroll where gender ='F'";
         updateDb.calculateTheValues(query);
     }
+    @Test
+    public void abilityToFindAverageOfSalaryOfFemaleEmployees() throws SQLException, EmployeePayRollException {
+        CalculatingAverageAndSum updateDb=new CalculatingAverageAndSum();
+        String query="SELECT AVG(salary) AS totalSalary FROM employee_payroll where gender ='F'";
+        updateDb.calculateTheValues(query);
+    }
 }
 
