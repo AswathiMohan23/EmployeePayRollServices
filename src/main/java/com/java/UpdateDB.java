@@ -34,5 +34,9 @@ public class UpdateDB {
         }
         return false;
     }
+
+    public  void retrievingDataByName(String name){
+
+    }
 }
 
