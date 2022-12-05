@@ -1,12 +1,10 @@
 package com.java;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
 
 public class JdbcConnection {
-    public static boolean jdbcConnection(String query) throws SQLException, EmployeePayRollException {
+    public static boolean jdbcConnection(String query) throws SQLException {
         try {
             String DB_URL = "jdbc:mysql://localhost:3306/payrollservices"; // give database name
             String USER = "root";
@@ -62,31 +60,3 @@ public class JdbcConnection {
     }
 }
 
-
-  /*  public List getData(String operations) {
-        String sqlQuery;
-        if (operations.equals("COUNT"))
-            sqlQuery = String.format("select %s(id) from employee_payroll GROUP BY gender;",operations);
-        else
-            sqlQuery = String.format("select %s(salary) from employee_payroll GROUP BY gender;",operations);
-        List dataList = new ArrayList<>();
-        try(Connection connection = this.getConnection()) {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sqlQuery);
-            while (resultSet.next())
-            {
-                double data = resultSet.getDouble(1);
-                dataList.add(data);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return dataList;
-    }
-
-    private Connection getConnection() {
-        return null;
-    }
-}
-
-*/

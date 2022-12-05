@@ -11,7 +11,6 @@ import static com.java.IOService.FILE_IO;
 import static com.java.JdbcConnection.jdbcConnection;
 
 public class EmployeePayrollServiceTest {
-    public JdbcConnection jdbcConnection=new JdbcConnection();
 
     @Test
     public void given3EmployeesWhenWrittenToFileShouldMatchEmployeeEntries() {
