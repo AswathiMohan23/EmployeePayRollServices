@@ -1,5 +1,5 @@
 package com.java;
 
-public enum IOService {
+public enum EmployeePayrollEnum {
     CONSOLE_IO,FILE_IO
 }

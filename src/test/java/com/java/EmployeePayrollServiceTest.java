@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.sql.SQLException;
 import java.util.Arrays;
 
-import static com.java.IOService.FILE_IO;
+import static com.java.EmployeePayrollEnum.FILE_IO;
 import static com.java.JdbcConnection.jdbcConnection;
 
 public class EmployeePayrollServiceTest {
@@ -50,27 +50,27 @@ public class EmployeePayrollServiceTest {
     }
     @Test
     public void abilityToFindSumOfSalaryOfMaleEmployees() throws SQLException, EmployeePayRollException {
-        CalculatingAverageAndSum updateDb=new CalculatingAverageAndSum();
+        CalculatingAverageAndSum calculatingAverageAndSum=new CalculatingAverageAndSum();
         String query="SELECT SUM(salary) AS totalSalary FROM employee_payroll where gender ='M'";
-        updateDb.calculateTheValues(query);
+        calculatingAverageAndSum.calculateTheValues(query);
     }
     @Test
     public void abilityToFindSumOfSalaryOfFemaleEmployees() throws SQLException, EmployeePayRollException {
-        CalculatingAverageAndSum updateDb=new CalculatingAverageAndSum();
+        CalculatingAverageAndSum calculatingAverageAndSum=new CalculatingAverageAndSum();
         String query="SELECT SUM(salary) AS totalSalary FROM employee_payroll where gender ='F'";
-        updateDb.calculateTheValues(query);
+        calculatingAverageAndSum.calculateTheValues(query);
     }
     @Test
     public void abilityToFindAverageOfSalaryOfFemaleEmployees() throws SQLException, EmployeePayRollException {
-        CalculatingAverageAndSum updateDb=new CalculatingAverageAndSum();
+        CalculatingAverageAndSum calculatingAverageAndSum=new CalculatingAverageAndSum();
         String query="SELECT AVG(salary) AS totalSalary FROM employee_payroll where gender ='F'";
-        updateDb.calculateTheValues(query);
+        calculatingAverageAndSum.calculateTheValues(query);
     }
     @Test
     public void abilityToFindAverageOfSalaryOfMaleEmployees() throws SQLException, EmployeePayRollException {
-        CalculatingAverageAndSum updateDb=new CalculatingAverageAndSum();
+        CalculatingAverageAndSum calculatingAverageAndSum=new CalculatingAverageAndSum();
         String query="SELECT AVG(salary) AS totalSalary FROM employee_payroll where gender ='M'";
-        updateDb.calculateTheValues(query);
+        calculatingAverageAndSum.calculateTheValues(query);
     }
 }
 
